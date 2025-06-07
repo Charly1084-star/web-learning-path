@@ -1,5 +1,5 @@
-let listaPalabras = ["tiburon","leon","salamandra","mono","capibara","chiguiro","drilococo", "tortuga", "sapo"];
-let palabraSecreta; 
+let listaPalabras = ["tiburon","leon","salamandra","mono","elefante","avestruz","capibara","chiguiro","drilococo", "tortuga", "sapo"];
+let paabraSecreta; 
 let intentosRestantes = 6;
 let letrasUsadas = [];
 document.getElementById("jugar").disabled = false;
@@ -17,7 +17,7 @@ function mostrarVidas (){
      const vidasDiv = document.getElementById("vidas");
      let corazones = "";
      for (i = 0; i < intentosRestantes; i++){
-          corazones += "° ";
+          corazones += "☠ ";
      }
      
      vidasDiv.textContent = corazones.trim();
@@ -53,8 +53,8 @@ function reiniciar(){
      mostrarVidas();
 }
 
-// f(mostrar mensaje)
-function mostrarMensaje (texto, tipo = "exito"){
+// f(mostrar mensaje) "exito"
+function mostrarMensajeExito (texto, tipo = "exito"){
      const mensajeDiv = document.getElementById("mensaje");
      mensajeDiv.textContent = texto;
      mensajeDiv.className = `mensaje ${tipo}`;
@@ -66,12 +66,26 @@ function mostrarMensaje (texto, tipo = "exito"){
      }, 3250);
 }
 
+// f(mostrar mensaje) "error"
+function mostrarMensajeError (texto, tipo = "error"){
+     const mensajeDiv = document.getElementById("mensaje");
+     mensajeDiv.textContent = texto;
+     mensajeDiv.className = `mensaje ${tipo}`;
+     mensajeDiv.style.display = "block";
+
+     // timer 
+     setTimeout(() => {
+          mensajeDiv.style.display = "none"
+     }, 3250);
+}
+
+
 // f(validar letra)
 
 function validarLetra (){
      let letra = document.getElementById("letra").value;
      if(letrasUsadas.includes(letra)){
-          mostrarMensaje("letra ya ha sido usada")
+          mostrarMensajeError("letra ya ha sido usada")
      } else {
           letrasUsadas.push(letra);
           console.log(letrasUsadas);
@@ -94,11 +108,11 @@ function validarLetra (){
                console.log(str);
 
                if (str == palabraSecreta){
-                    mostrarMensaje("Felicitaciones, la palabra era "+ palabraSecreta);
+                    mostrarMensajeExito("Felicitaciones, la palabra era "+ palabraSecreta);
                     document.getElementById("validar").disabled = true; 
                } 
           }else{
-                    mostrarMensaje('la letra no se encuentra dentro de la palabra');
+                    mostrarMensajeError('la letra no se encuentra dentro de la palabra');
                     intentosRestantes--;
                     document.getElementById("intentos-restantes").textContent = intentosRestantes;
                     mostrarVidas();
@@ -116,3 +130,7 @@ function validarLetra (){
 document.getElementById("jugar").addEventListener("click", jugar);
 document.getElementById("validar").addEventListener("click", validarLetra);
 document.getElementById("reiniciar").addEventListener("click", reiniciar);
+
+app.listen(3001, () => {
+console.log("Servidor corriendo en http://localhost:3001");
+});

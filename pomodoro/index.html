@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/index.css">
+     <title>Pomodoro timer | Focus</title>
+</head>
+<body>
+
+     <div id="timer-message">Please select a timer before starting.</div>
+
+     <div class="container">
+          <div class="timer">
+               <h1> Pomodoro Timer </h1>
+
+               <div class="button-container">
+                    <button class="button" id="pomodoro-session">Pomodoro</button>
+                    <button class="button" id="short-break">Short Break</button>
+                    <button class="button" id="long-break">Long Break</button>
+               </div>
+               <main>
+                    <div class="pomodoro">
+                         <div id="pomodoro-timer" class="timer-display" data-duration="30.00">
+                              <h1 class="time">30:00</h1>
+                         </div>
+
+                         <div id="short-timer" class="timer-display" data-duration="00.10">
+                              <h1 class="time">00:10</h1>
+                         </div>
+
+                         <div id="long-timer" class="timer-display" data-duration="15.00">
+                              <h1 class="time">15:00</h1>
+                         </div> 
+
+                         <p id="end-time-display" ></p>
+
+                    </div>
+
+               </main>
+               <p id="cycle-count">🌀 Ciclos completados: 0</p>
+
+
+               <div class="buttons">
+                    <button id="start">START</button>
+                    <button id="stop">STOP</button>                    
+               </div>
+          </div>
+     </div>
+     
+     <script>
+          document.addEventListener("DOMContentLoaded", () => {
+          if (Notification.permission !== "granted") {
+               Notification.requestPermission();
+          }
+     });
+     </script>
+
+     <!-- Sección para crear temporizadores personalizados -->
+     
+
+
+     <script src="js/index.js"> </script>
+</body>
+</html>

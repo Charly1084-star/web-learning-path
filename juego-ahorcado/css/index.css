@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
      margin: 0; 
-     font-family: 'Segoe UI', sans-serif;
+     font-family: 'Poppins', sans-serif;
      background-color: #f0f2f5;
      display: flex;
      justify-content: center;
@@ -90,20 +92,25 @@ button {
      background-color: #4a4a8c;
      color: white;
      cursor: pointer;
-     transition: background-color 0.3;     
+     transition: all .2s ease, background-color 0.3s ease; 
+     
+     
 }
 
 button :hover{
-     background-color: #2c2c5c;
+     transform: scale(1.1);
+     background-color: #3333ff;
 }
 
 button:disabled {
+     transform: scale(0.9);    
      background-color: #a5a5c3;
      cursor: not-allowed;
      opacity: 0.8;
 }
 
 #jugar:disabled {
+     transform: scale(0.9);
      background-color: #bdbde0;
      cursor: not-allowed;
      opacity: 0.8;
@@ -120,7 +127,7 @@ button:disabled {
 
 .mensaje {
      margin-top: 15px;
-     padding: 10px 20px;
+     padding: 8px 17px;
      border-radius: 10px;
      font-weight: bold;
      font-size: 1.2em;
