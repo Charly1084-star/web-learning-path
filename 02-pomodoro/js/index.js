@@ -173,8 +173,6 @@ function hideCustomInputs() {
 }
 
 
-
-
 session.addEventListener("click", showCustomInputs);
 shortBreak.addEventListener("click", showCustomInputs);
 longBreak.addEventListener("click", showCustomInputs);
