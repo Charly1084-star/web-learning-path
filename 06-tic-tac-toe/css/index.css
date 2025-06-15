@@ -102,3 +102,21 @@ main {
 #restart-btn:hover {
      background: #2A2343;
 }
+
+#difficulty-selector {
+     margin: 20px auto;
+     display: block;
+     padding: 8px 16px;
+     font-size: 14px;
+     border: 2px solid #2A2343;
+     border-radius: 8px;
+     background-color: #17122A;
+     color: white;
+     cursor: pointer;
+     transition: all 0.2s ease-in-out;
+}
+
+#difficulty-selector:hover {
+     background-color: #2A2343;
+     border-color: #A737FF;
+}
