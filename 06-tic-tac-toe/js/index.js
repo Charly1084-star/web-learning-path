@@ -48,6 +48,8 @@ function tapCell(cell, index) {
                changePlayer()
                aiMove()
                //randomPick()
+               aiMove()
+               //randomPick()
           }
           
      }
@@ -63,6 +65,110 @@ function changePlayer() {
      player = (player === 'X') ? 'O' : 'X'
 
 }
+function aiMove() {
+     isPauseGame = true;
+
+     setTimeout(() => {
+          let bestMove;
+
+          if (difficulty === "easy") {
+               // Jugada aleatoria
+               const emptyIndices = inputCells
+                    .map((val, idx) => val === '' ? idx : null)
+                    .filter(val => val !== null);
+               bestMove = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+          } 
+          else if (difficulty === "medium") {
+               // 50% de probabilidad de ser perfecta
+               if (Math.random() < 0.5) {
+                    const emptyIndices = inputCells
+                         .map((val, idx) => val === '' ? idx : null)
+                         .filter(val => val !== null);
+                    bestMove = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+               } else {
+                    bestMove = miniMax(inputCells, player).index;
+               }
+          } 
+          else {
+               // hard (miniMax siempre)
+               bestMove = miniMax(inputCells, player).index;
+          }
+
+          updateCell(cells[bestMove], bestMove);
+
+          if (!checkWinner()) {
+               changePlayer();
+               isPauseGame = false;
+          }
+     }, 500);
+}
+
+const difficultySelector = document.getElementById('difficulty-selector');
+difficultySelector.addEventListener('change', () => {
+     difficulty = difficultySelector.value;
+});
+
+/*function aiMove () {
+     isPauseGame = true;
+
+     setTimeout(() => {
+          const bestMove = miniMax(inputCells, player).index;
+          updateCell(cells[bestMove], bestMove);
+
+          if (!checkWinner()) {
+               // Change the player back to the human player
+               changePlayer();
+               isPauseGame = false;
+          }
+     }, 500) // Delay 0.5 seconds for the AI's move
+}*/
+
+function miniMax(board, currentPlayer) {
+     const opponent = currentPlayer === 'X' ? 'O' : 'X';
+     const winner = checkSimulatedWinner(board);
+
+     if (winner === player) return { score: 1 }; // IA gana
+     if (winner === (player === 'X' ? 'O' : 'X')) return { score: -1 }; // humano gana
+     if (!board.includes("")) return { score: 0 }; // empate
+
+     const moves = [];
+
+     board.forEach((val, idx) => {
+          if (val === "") {
+               const newBoard = [...board];
+               newBoard[idx] = currentPlayer;
+
+               const result = miniMax(newBoard, opponent);
+               moves.push({
+                    index: idx,
+                    score: result.score
+               });
+          }
+     });
+
+     if (currentPlayer === player) {
+          return moves.reduce((best, move) => move.score > best.score ? move : best);
+     } else {
+          return moves.reduce((best, move) => move.score < best.score ? move : best);
+     }
+}
+
+function checkSimulatedWinner(board) {
+     for (const [a, b, c] of winConditions) {
+          if (
+               board[a] !== "" &&
+               board[a] === board[b] &&
+               board[a] === board[c]
+          ) {
+               return board[a]; // "X" o "O"
+          }
+     }
+     return null;
+}
+
+
+
+/*function randomPick() {
 function aiMove() {
      isPauseGame = true;
 
@@ -191,6 +297,11 @@ function checkSimulatedWinner(board) {
           player = (player === 'X') ? 'O' : 'X' // Change player back to human
 
      }, 1000) // Delay 1sec for de computer's move
+}*/
+
+
+
+
 }*/
 
 
