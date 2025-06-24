@@ -1,0 +1,18 @@
+:root {
+     --bg: #fafafa;
+     --font: "Poppins", sans-serif;
+     --font-display: "Poppins", sans-serif;
+     --hotpink: #0047ab;
+     --orange: #1ca9c9;
+     --gradient: linear-gradient(35deg, var(--orange), var(--hotpink));
+}
+*{
+     box-sizing: border-box;
+}
+
+body {
+     margin: auto;
+     min-height: 100vh;
+     background: var(--bg);
+     font-family: var(--font);
+}
