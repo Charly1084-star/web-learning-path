@@ -3,9 +3,13 @@
      --font: "Poppins", sans-serif;
      --font-display: "Poppins", sans-serif;
      --hotpink: #0047ab;
-     --orange: #1ca9c9;
+     --orange: #b0e0e6;
+     --darkBlue: #1B1B1B;
+     --russianBlue: #003153;
      --gradient: linear-gradient(35deg, var(--orange), var(--hotpink));
+     --gradientBtn: linear-gradient(35deg, var(--darkBlue), var(--russianBlue))
 }
+
 *{
      box-sizing: border-box;
 }

@@ -1,13 +1,14 @@
-var segundos = 0;
-var minutos = 1;
-var segundosTexto;
-var minutostexto;
-var cronometro;
+
 
 
 function iniciaCrono(){
+     var segundos = 0;
+     var minutos = 1;
+     var segundosTexto;
+     var minutostexto;
+     var cronometro;
      function actualizaCont(){
-          console.log(segundos)
+          console.log(segundos);
           segundos --;
           if(segundos < 0){
                segundos = 59 ;
@@ -19,6 +20,7 @@ function iniciaCrono(){
                minutos = 0;
                // limpiar el cronometro 
                clearInterval(cronometro);
+               timeOver();
           }
           segundosTexto = segundos;
           minutostexto = minutos;
