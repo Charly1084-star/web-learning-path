@@ -123,6 +123,7 @@ difficultySelector.addEventListener('change', () => {
      }, 500) // Delay 0.5 seconds for the AI's move
 }*/
 
+
 function miniMax(board, currentPlayer) {
      const opponent = currentPlayer === 'X' ? 'O' : 'X';
      const winner = checkSimulatedWinner(board);
